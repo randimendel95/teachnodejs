@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Teaching node.js</title>
-	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
 <body>
@@ -65,8 +65,37 @@
 	console.log("Server has started.");
 			</code>
 		</pre>
-		<p>We would expect that it would post to the server, then call the console.log("Server has started"), but because the function is put onto Node.js event loop, the server starts and prints that statement to the console first, then executes the event.  </p>
+		<p>The expected order in the console based on how we've been running the server in this class would be : "Request received." in the console, followed by the request being written to the server, then finally "Server has started." in the console.  However, due to asynchronous calling, when the funcion is called, first the action is thrown into the event loop, then the server is started, and "Server has started." is shown on the console, then as node.js goes through the events, the request is received and then posted on the server.</p>
 
+	<!--This next section shows how to use a router seperately-->
+	<div>
+		<h2>Routers</h2>
+		<p>We can make the server.js file take care of the server, but run the calls on our index.js file.  In our index.js file, all we need is to verify that there is a server through the require function, and then call for action on that server.  We do this with the code:
+		<pre class="well well-md">
+			<code>
+	var server = require("./server");
+	server.start();
+			</code>
+		</pre>
+		<p>This will call a function start() from the server file.  Our server should now look like this:
+		<pre class="well well-md">
+			<code>
+	var http = require("http");
+
+	function start() {
+		function onRequest(request, response) {
+	    	console.log("Request received.");
+	    	response.writeHead(200, {"Content-Type": "text/plain"});
+	    	response.write("Hello World");
+	    	response.end();
+	  	}
+	  	http.createServer(onRequest).listen(8888);
+	  	console.log("Server has started.");
+	}
+	exports.start = start;
+			</code>
+		</pre>
+		<p>This calls our request function when start is called.  First it puts the onRequest function in the action loop, then outside of the onRequest function, it starts the server, then executes the action.  "exports.start = start" creates an empty object "exports" then sets it to the return of the start function. </p>  		
 	</div>
 
 	</body>
