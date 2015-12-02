@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Teaching node.js</title>
+	<script src="https://code.jquery.com/jquery.min.js"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -15,9 +16,35 @@
 
 	<!--Teahing user to make a basic server, that does nothing with node.js-->
 	<div>
-		<h2 class="">Create a basic http server</h2>
-		<p>In your file server.js:
+		<h2>Create a basic http server</h2>
+		<p>First off, we start by using the HTTP server</p>
+		<p>In the file called "server.js", make an HTTP request to use the HTTP server with</p>
+		<pre class="well well-md">
+			<code class="startserver">
+	var http = require("http");
+			</code>
+		</pre>
+		<p>Once you have requested http, you have to create the server, and listen to it on a local host (eg. 8888) with </p>
+		<pre class="well well-md">
+			<code class="startserver">
+	var server = http.createServer();
+	server.listen(8888);
+			</code>
+		</pre>
+		<p>This will start your file, and listen for commands on the local server 8888.  However, since we haven't made any requests yet, this command doesn't do anything.</p>
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">View Code</button>
 
+		<!-- Modal -->
+		<div id="myModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Running empty HTTP Server</h4>
+		      </div>
+		      <div class="modal-body">
 		<pre class="well well-md">
 			<code class="startserver">
 	var http = require("http");
@@ -26,11 +53,53 @@
 	server.listen(8888);
 			</code>
 		</pre>
-		<p>This will start your file, and listen for commands on the local server 8888.</p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
+
+		
 	</div>
 
 	<!--Writes onto the server using the response-->
 	<div>
+		<h2>Writing to the server</h2>
+		<p>Now that we have a server running, we can add a function into the server, so that it will actually do something!  In our createServer() function, we now needs parameters for a request and a response.</p>
+		<p>The <b>response</b> is what appears on our local server.</p>
+		<p>Write to the response with the following </p>
+		<pre class="well well-md">
+			<code class="basichttp">
+	response.writeHead(200, {"Content-Type": "text/plain"});
+	response.write();
+			</code>
+		</pre>
+		<p>Whatever you write inside the write() method will be written on the server.</p>
+		<p>Now try adding to your "server.js" method by writing something to the page.  Now when you run the server with </p>
+		<pre class="well well-md">
+			<code class="basichttp">
+	node server.js
+			</code>
+		</pre>
+		<p>You should get that text on your localhost</p>
+
+		<!-- Trigger the modal with a button -->
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">View the Code</button>
+
+		<!-- Modal -->
+		<div id="myModal2" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Running on a local Server</h4>
+		      </div>
+		      <div class="modal-body">
 		<pre class="well well-md">
 			<code class="basichttp">
 	var http = require("http");
@@ -42,16 +111,20 @@
 	}).listen(8888);
 			</code>
 		</pre>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
+
 
 		<p>Now you are running an http server on your local host (8888).</p>
-		<p>To test this, go to your terminal and input the command</p>
-		<pre class="well well-md">
-			<code class="runserver">
-	node server.js
-			</code>
-		</pre>
 		<p>Now if you go to localhost:8888, it should be running your server, and writing whatever you put in the function response.write()!</p>
 	</div>
+	
 	
 	<!--Next we are showing the order of events and how asynchronous calls work-->
 	<div>
