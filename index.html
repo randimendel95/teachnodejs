@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Teaching node.js</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+	<h1 class="pageTitle">Using Node.js</h1>
+
+	<!--Teahing user to make a basic server, that does nothing with node.js-->
+	<div>
+		<h2 class="">Create a basic http server</h2>
+		<p>In your file server.js:
+
+		<pre class="well well-md">
+			<code class="startserver">
+	var http = require("http");
+
+	var server = http.createServer();
+	server.listen(8888);
+			</code>
+		</pre>
+		<p>This will start your file, and listen for commands on the local server 8888.</p>
+	</div>
+
+	<!--Writes onto the server using the response-->
+	<div>
+		<pre class="well well-md">
+			<code class="basichttp">
+	var http = require("http");
+
+	http.createServer(function(request, response) {
+	  	response.writeHead(200, {"Content-Type": "text/plain"});
+	  	response.write("This will be posted on your server");
+		response.end();
+	}).listen(8888);
+			</code>
+		</pre>
+
+		<p>Now you are running an http server on your local host (8888).</p>
+		<p>To test this, go to your terminal and input the command</p>
+		<pre class="well well-md">
+			<code class="runserver">
+	node server.js
+			</code>
+		</pre>
+		<p>Now if you go to localhost:8888, it should be running your server, and writing whatever you put in the function response.write()!</p>
+	</div>
+	
+	<!--Next we are showing the order of events and how asynchronous calls work-->
+	<div>
+		<h2>Asynchronous Calls with Node.js</h2>
+		<p>This next section will show the order that node.js is processing requests, by printing to the console.  Using you server.js file, add in console.log() commands at the beginning of your function, and after the request.  For example:
+		<pre class="well well-md">
+			<code class="async">
+	var http = require("http");
+	function onRequest(request, response) {
+		console.log("Request received.");
+	  	response.writeHead(200, {"Content-Type": "text/plain"});
+	  	response.write("This will be posted on your server");
+	  	response.end();
+	}
+	http.createServer(onRequest).listen(8888);
+	console.log("Server has started.");
+			</code>
+		</pre>
+		<p>We would expect that it would post to the server, then call the console.log("Server has started"), but because the function is put onto Node.js event loop, the server starts and prints that statement to the console first, then executes the event.  </p>
+
+	</div>
+
+	</body>
+</html>
+
