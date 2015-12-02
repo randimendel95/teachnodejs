@@ -124,12 +124,38 @@
 		<p>Now you are running an http server on your local host (8888).</p>
 		<p>Now if you go to localhost:8888, it should be running your server, and writing whatever you put in the function response.write()!</p>
 	</div>
-	
+
 	
 	<!--Next we are showing the order of events and how asynchronous calls work-->
 	<div>
 		<h2>Asynchronous Calls with Node.js</h2>
-		<p>This next section will show the order that node.js is processing requests, by printing to the console.  Using you server.js file, add in console.log() commands at the beginning of your function, and after the request.  For example:
+		<p>This next section will show the order that node.js is processing requests</p>
+		<p>We will do that by printing to the console with console.log()</p>
+		<p>First, we will put our actions into a function, and call it onRequest.  This should do the same thing as the function within createServer, but lets simplify by making it a unique function.  </p>
+		<pre class="well well-md">
+			<code>
+	function onRequest(request, response) {
+	  	response.writeHead(200, {"Content-Type": "text/plain"});
+	  	response.write("This will be posted on your server");
+		response.end();
+	})
+			</code>
+		</pre>
+
+		<p>Add console notes to your server.js file, at the beginning of your function when the request is made, and after server begins running. </p>
+		<!-- Trigger the modal with a button -->
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">View Code</button>
+
+		<!-- Modal -->
+		<div id="myModal3" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">See Asynchronous Order</h4>
+		      </div>
+		      <div class="modal-body">
 		<pre class="well well-md">
 			<code class="async">
 	var http = require("http");
@@ -143,6 +169,17 @@
 	console.log("Server has started.");
 			</code>
 		</pre>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
+
+
+		
 		<p>The expected order in the console based on how we've been running the server in this class would be : "Request received." in the console, followed by the request being written to the server, then finally "Server has started." in the console.  However, due to asynchronous calling, when the funcion is called, first the action is thrown into the event loop, then the server is started, and "Server has started." is shown on the console, then as node.js goes through the events, the request is received and then posted on the server.</p>
 
 	<!--This next section shows how to use a router seperately-->
