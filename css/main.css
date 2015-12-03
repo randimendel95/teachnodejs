@@ -6,3 +6,8 @@
 .nodeImg {
 	display:inline;
 }
+
+.btn-info {
+	background-color:YellowGreen;
+	border-color:YellowGreen;
+}
