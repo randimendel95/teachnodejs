@@ -77,7 +77,7 @@
 		<pre class="well well-md">
 			<code class="basichttp">
 	response.writeHead(200, {"Content-Type": "text/plain"});
-	response.write();
+	response.write("blah blah blah");
 			</code>
 		</pre>
 		<p>Whatever you write inside the write() method will be written on the server.</p>
@@ -139,7 +139,7 @@
 			<code>
 	function onRequest(request, response) {
 	  	response.writeHead(200, {"Content-Type": "text/plain"});
-	  	response.write("This will be posted on your server");
+	  	response.write("blah blah blah");
 		response.end();
 	})
 			</code>
