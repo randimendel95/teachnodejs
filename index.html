@@ -9,14 +9,31 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="js/index.js"></script>
 </head>
 
 <body class="container">
+	
 	<div class="header">
 		<h1 class="pageTitle">An Introduction to Server Side Web Development</h1>
 		<img class="nodeImg" src="data:image/png;base64,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"></img>
 		
 	</div>
+
+	<!--What is node, explanation-->
+	<div>
+		<h2><b>WHAT</b> is node.js?</h2>
+		<p>It is a runtime environment that takes JavaScript events and puts them into an event loop to complete.  It is used in place of the web browsers, by running it in the command line (terminal). One usually defines a run function at the beginning of code, but node.js starts it immediately, and only stops once it has executed all events.</p>
+		<p>Node Package manager, known as NPM, can install various dependencies that simplify and extend functionality of node. All these modules contain stored functions that can be reused with node, and there are hundreds of them available to download with NPM. We will be using express and socket.io</p>
+		<p>Express is a very common framework that simplifies building a simple web service and some standard funcionality</p>
+		<p>We will also introduce socket.io, which is a package that is especially useful for realtime applications, by connecting web clients and servers. It works with a client-side library in the browser, and a server-side library which runs with node.js</p>
+	</div>
+
+	<div>
+		<h2><b>WHEN</b> should you use node.js</h2>
+		<p>It runs asynchronously, so it can handle multiple actions at once, much quicker.  When it needs to operate, it sends a call to the events loop, then continues to go through the file, while the events are worked on.</p>
+		<p>This makes it especially good for running real time, live applications, and those that require large amounts of data.</p>
+
 	<!--Teahing user to make a basic server, that does nothing with node.js-->
 	<div>
 		<h2>Create a basic http server</h2>
@@ -216,6 +233,196 @@
 		<p>This calls our request function when start is called.  First it puts the onRequest function in the action loop, then outside of the onRequest function, it starts the server, then executes the action.  "exports.start = start" creates an empty object "exports" then sets it to the return of the start function. </p>  		
 	</div>
 
+	<!--Installing modules and such -->
+	<div>
+		<h2>Node.js Modules/Dependencies</h2>
+		<p>First to create a file package.json, you initialize NPM in your command line with:</p>
+		<pre class="well well-md">
+			<code>
+	$npm init
+			</code>
+		</pre>
+		<p>This will create a file with certain dependencies in the file, and as you download packages to NPM, they will be stored in package.json.</p>
+		<!-- Trigger the modal with a button -->
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModaljson">View Package.json</button>
+
+		<!-- Modal -->
+		<div id="myModaljson" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Default file for package.json</h4>
+		      </div>
+		      <div class="modal-body">
+		<pre class="well well-md">
+			<code class="async">
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3"
+    "socket.io": "1.2.0"
+  }
+}
+			</code>
+		</pre>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		</div>
+
+	  </div>
+	</div>
+
+	<div>
+		<h2>Using Express</h2>
+		<p>One of the great uses of express is to attach an HTML file to the server</p>
+		<p>This can be done using the .get() function in express, it takes care of basic routing.  To create an express app, you must require it, then create an app with the following:</p>
+		<pre class="well well-md">
+			<code>
+	var express = require("express");
+	var app = express();
+			</code>
+		</pre>
+		<p>Then you can go into basic routing of the server instance in express (app).  The standard format of this is "app.method(path, handler)". To put something into the root route, the path should be "/", and the handler is a function.  The function needs both the request and result as a parameters in order to post to the server.  The result, as before is what is posted on the server page.</p>
+		<p>There are a number of methods to add to the server page (hint:the method we need is sendFile())</p> 
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalio">View chat code</button>
+
+		<!-- Modal -->
+		<div id="myModalio" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Adding HTML file to node</h4>
+		      </div>
+		      <div class="modal-body">
+		<pre class="well well-md">
+			<code class="async">
+	var express = require('express');
+	var app = express();
+	var http = require('http').Server(app);
+	var io = require('socket.io')(http);
+
+	app.get('/', function(req, res){
+	  res.sendFile(__dirname + '/index.html');
+	});
+			</code>
+		</pre>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		</div>
+
+	  </div>
+	</div>
+
+	</div>
+
+	<!--Now we need to use the socket.io to do chat messages-->
+	<div>
+		<h2>Socket.io Functions</h2>
+		<p></p>
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalsocket">View chat code</button>
+
+		<!-- Modal -->
+		<div id="myModalsocket" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Using socket.io for Chat</h4>
+		      </div>
+		      <div class="modal-body">
+		<pre class="well well-md">
+			<code class="async">
+	var app = require('express')();
+	var http = require('http').Server(app);
+	var io = require('socket.io')(http);
+
+	app.get('/', function(req, res){
+	  res.sendFile(__dirname + '/index.html');
+	});
+
+	io.on('connection', function(socket){
+	  socket.on('chat message', function(msg){
+	    io.emit('chat message', msg);
+	  });
+	});
+			</code>
+		</pre>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		</div>
+
+	  </div>
+	</div>
+	</div>
+
+	<div>
+		<h2>Final index.js Chat App</h2>
+		<p>Now once we make it listen into the http server, we can finish off the applicatoin</p>
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalchat">View chat code</button>
+
+		<!-- Modal -->
+		<div id="myModalchat" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Using socket.io for Chat</h4>
+		      </div>
+		      <div class="modal-body">
+		<pre class="well well-md">
+			<code class="async">
+	var app = require('express')();
+	var http = require('http').Server(app);
+	var io = require('socket.io')(http);
+
+	app.get('/', function(req, res){
+	  res.sendFile(__dirname + '/index.html');
+	});
+
+	io.on('connection', function(socket){
+	  socket.on('chat message', function(msg){
+	    io.emit('chat message', msg);
+	  });
+	});
+
+	http.listen(3000, function(){
+	  console.log('listening on *:3000');
+	});
+			</code>
+		</pre>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		</div>
+
+	  </div>
+	</div>
+	</div>
 	</body>
 </html>
 
