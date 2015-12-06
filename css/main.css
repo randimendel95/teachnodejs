@@ -11,3 +11,13 @@
 	background-color:YellowGreen;
 	border-color:YellowGreen;
 }
+
+#nodelogo {
+    background-color:black;
+    height:100px;
+    width:auto;
+    display:inline;
+}
+.header {
+    display:inline;
+}
