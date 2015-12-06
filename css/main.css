@@ -1,3 +1,7 @@
+body{
+    /*padding-top: 50px;*/
+    padding-top: 10px;
+}
 .well-md {
 	background-color: black;
 	color:white;
@@ -8,23 +12,32 @@
 }
 
 .btn-info {
-	background-color:YellowGreen;
-	border-color:YellowGreen;
+	background-color:#80bd01;
+	border-color:#80bd01;
 }
 
 #nodelogo {
-    background-color:black;
+    background-color:#222;
     height:100px;
     width:auto;
 
 }
 .header > div{
-
+    padding-top: 1em;
+    padding-bottom: 1em;
     color:white;
-    background-color:black;
+    background-color:#222;
 }
 
 .pageTitle {
     margin-left:1em;
 }
+.link{
+    color: #80bd01;
+}
 
+#footer{
+    color: #222;
+    font-size: 10px;
+    padding-top: 1em;
+}
