@@ -265,10 +265,18 @@
     		<p>First to create a file package.json, you initialize NPM in your command line with:</p>
     		<pre class="well well-md">
     			<code>
-    	$npm init
+    	npm cache clean
+        npm init
     			</code>
     		</pre>
-    		<p>This will create a file with certain dependencies in the file, and as you download packages to NPM, they will be stored in package.json.</p>
+    		<p>This will create a file with certain dependencies in the file, and as you download packages to NPM, they will be stored in package.json.  For this activity we provided this file for you, with dependencies on express and socket.io, so now all you need to enter is:</p>
+            <pre class="well well-md">
+                <code>
+        npm cache clean
+        npm install
+                </code>
+            </pre>
+            <p>Which will install all the dependencies in the file</p>
     		<!-- Trigger the modal with a button -->
     		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModaljson">View Package.json</button>
 
@@ -474,7 +482,7 @@
     	<div>
     		<h2>Final index.js Chat App</h2>
             <div class="well well-lg">
-        		<p>Now once we make it listen into the http server, we can finish off the applicatoin</p>
+        		<p>Now once we make it listen into the http server, we can finish off the application</p>
                 <p>All we still need is to make the server listen to the file, as we did in the early exercise</p>
         				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalchat">View chat code</button>
 
