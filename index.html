@@ -133,13 +133,13 @@
     		      <div class="modal-body">
     		<pre class="well well-md">
     			<code class="basichttp">
-    	var http = require("http");
+    var http = require("http");
 
-    	http.createServer(function(request, response) {
-    	  	response.writeHead(200, {"Content-Type": "text/plain"});
-    	  	response.write("This will be posted on your server");
-    		response.end();
-    	}).listen(8888);
+    http.createServer(function(request, response) {
+    	response.writeHead(200, {"Content-Type": "text/plain"});
+    	response.write("This will be posted on your server");
+    	response.end();
+    }).listen(8888);
     			</code>
     		</pre>
     		      </div>
@@ -191,15 +191,15 @@
     		      <div class="modal-body">
     		<pre class="well well-md">
     			<code class="async">
-    	var http = require("http");
-    	function onRequest(request, response) {
-    		console.log("Request received.");
-    	  	response.writeHead(200, {"Content-Type": "text/plain"});
-    	  	response.write("This will be posted on your server");
-    	  	response.end();
-    	}
-    	http.createServer(onRequest).listen(8888);
-    	console.log("Server has started.");
+    var http = require("http");
+    function onRequest(request, response) {
+    	console.log("Request received.");
+    	response.writeHead(200, {"Content-Type": "text/plain"});
+    	response.write("This will be posted on your server");
+    	response.end();
+    }
+    http.createServer(onRequest).listen(8888);
+    console.log("Server has started.");
     			</code>
     		</pre>
     		      </div>
@@ -396,10 +396,10 @@
     });
                 </code>
             </pre>
-    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalsocket">View index.js chat code</button>
+    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalindexjs">View index.js chat code</button>
 
     		<!-- Modal -->
-    		<div id="myModalsocket" class="modal fade" role="dialog">
+    		<div id="myModalindexjs" class="modal fade" role="dialog">
     		  <div class="modal-dialog">
     		    <!-- Modal content-->
     		    <div class="modal-content">
@@ -409,21 +409,21 @@
     		      </div>
     		      <div class="modal-body">
     		<pre class="well well-md">
-    			<code class="async">
-    	var express = require('express');
-        var app = express();
-    	var http = require('http').Server(app);
-    	var io = require('socket.io')(http);
+    			<code>
+    var express = require('express');
+    var app = express();
+	var http = require('http').Server(app);
+  	var io = require('socket.io')(http);
 
-    	app.get('/', function(req, res){
-    	  res.sendFile(__dirname + '/index.html');
-    	});
+  	app.get('/', function(req, res){
+   	  res.sendFile(__dirname + '/index.html');
+   	});
 
-    	io.on('connection', function(socket){
-    	  socket.on('chat message', function(msg){
-    	    io.emit('chat message', msg);
-    	  });
-    	});
+   	io.on('connection', function(socket){
+   	    socket.on('chat message', function(msg){
+   	        io.emit('chat message', msg);
+   	    });
+   	});
     			</code>
     		</pre>
     		      </div>
@@ -448,7 +448,7 @@
                   <div class="modal-body">
             <pre class="well well-md">
                 <code>
-    var socket = io();
+      var socket = io();
       $('form').submit(function(){
         socket.emit('chat message', $('#m').val());
         $('#m').val('');
@@ -484,28 +484,28 @@
         		    <div class="modal-content">
         		      <div class="modal-header">
         		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        		        <h4 class="modal-title">Using socket.io for Chat</h4>
+        		        <h4 class="modal-title">Final index.js Chat code</h4>
         		      </div>
         		      <div class="modal-body">
         		<pre class="well well-md">
         			<code class="async">
-        	var app = require('express')();
-        	var http = require('http').Server(app);
-        	var io = require('socket.io')(http);
+    var app = require('express')();
+    var http = require('http').Server(app);
+    var io = require('socket.io')(http);
 
-        	app.get('/', function(req, res){
-        	  res.sendFile(__dirname + '/index.html');
-        	});
+    app.get('/', function(req, res){
+        res.sendFile(__dirname + '/index.html');
+    });
 
-        	io.on('connection', function(socket){
-        	  socket.on('chat message', function(msg){
-        	    io.emit('chat message', msg);
-        	  });
-        	});
+    io.on('connection', function(socket){
+        socket.on('chat message', function(msg){
+        	io.emit('chat message', msg);
+        });
+    });
 
-        	http.listen(3000, function(){
-        	  console.log('listening on *:3000');
-        	});
+    http.listen(3000, function(){
+        console.log('listening on *:3000');
+    });
         			</code>
         		</pre>
         		      </div>
