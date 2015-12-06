@@ -248,6 +248,15 @@
 	</div>
     -->
 
+
+    <div>
+        <h2>What now?</h2>
+        <div class="well well-lg">
+            <p>We will be making a basic chat service with node.js, where we can all get on a server, and chat in real-time!</p>
+            <p>Fork and clone <a href="">this repo</a> then follow the steps below (and as designated in the file) to update the file index.js</p> 
+        </div>
+    </div>
+
 	<!--Installing modules and such -->
 	<div>
 		<h2>Node.js Modules/Dependencies</h2>
@@ -303,9 +312,9 @@
     </div>
 
 	<div>
-		<h2>Using Express</h2>
+		<h2>Our First Dependency: Express</h2>
         <div class="well well-lg">
-    		<p>One of the great uses of express is to attach an HTML file to the server</p>
+    		<p>Express is a web-application framework that allows you to organize the server side of your node.js app.  It handles routing, requests, and views.  We will be using it to serve clients the HTML for our application.  </p>
     		<p>This can be done using the .get() function in express, it takes care of basic routing.  To create an express app, you must require it, then create an app with the following:</p>
     		<pre class="well well-md">
     			<code>
@@ -314,21 +323,21 @@
     			</code>
     		</pre>
     		<p>Then you can go into basic routing of the server instance in express (app).  The standard format of this is "app.method(path, handler)". To put something into the root route, the path should be "/", and the handler is a function.  The function needs both the request and result as a parameters in order to post to the server.  The result, as before is what is posted on the server page.</p>
-    		<p>There are a number of methods to add to the server page (hint:the method we need is sendFile())</p> 
-    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalio">View chat code</button>
+    		<p>There are a number of handlers available in express (hint:the method we need is sendFile(location))</p> 
+    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalExpress">View Express Code</button>
 
     		<!-- Modal -->
-    		<div id="myModalio" class="modal fade" role="dialog">
+    		<div id="myModalExpress" class="modal fade" role="dialog">
     		  <div class="modal-dialog">
     		    <!-- Modal content-->
     		    <div class="modal-content">
     		      <div class="modal-header">
     		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-    		        <h4 class="modal-title">Adding HTML file to node</h4>
+    		        <h4 class="modal-title">Adding HTML file to index.js with Express</h4>
     		      </div>
     		      <div class="modal-body">
     		<pre class="well well-md">
-    			<code class="async">
+    			<code>
     	var express = require('express');
     	var app = express();
     	var http = require('http').Server(app);
@@ -354,10 +363,40 @@
 
 	<!--Now we need to use the socket.io to do chat messages-->
 	<div>
-		<h2>Socket.io Functions</h2>
+		<h2>Our Second Dependency: Socket.io</h2>
         <div class="well well-lg">
-    		<p></p>
-    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalsocket">View chat code</button>
+    		<p>Socket.io is used for event-based communication between multiple users.  It is used in real time for collaboration such as messaging, streaming, and collaboration.  We have a bidirectional communication structure, so the server will get any new data and push it to all other clients immediately.  Socket.io works much quickly for such interactions compared to standard web stacking servers.</p>
+            <p>First off, we need to load the client, which can be done with the command</p>
+            <pre class="well well-md">
+                <code>
+    var socket = io();
+                </code>
+            </pre>
+            <p>This must go in our client side, so in a seperate JS file, we will use sendChat.js</p>
+            <p>In this file, we will also add the handler for submitting an event from the client.  </p>
+            <pre class="well well-md">
+                <code>
+    $('form').submit(function(){
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+    });
+    socket.on('chat message', function(msg){
+        $('#messages').append($('&lt;li&gt;').text(msg));
+    });
+                </code>
+            </pre>
+            <p>To send this message to everyone, we use the function io.emit() in our index.js file, for the server side</p>
+            <pre class="well well-md">
+                <code>
+    io.on('connection', function(socket){
+      socket.on('chat message', function(msg){
+        io.emit('chat message', msg);
+      });
+    });
+                </code>
+            </pre>
+    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalsocket">View index.js chat code</button>
 
     		<!-- Modal -->
     		<div id="myModalsocket" class="modal fade" role="dialog">
@@ -366,12 +405,13 @@
     		    <div class="modal-content">
     		      <div class="modal-header">
     		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-    		        <h4 class="modal-title">Using socket.io for Chat</h4>
+    		        <h4 class="modal-title">Chat index.js file, using Socket.io</h4>
     		      </div>
     		      <div class="modal-body">
     		<pre class="well well-md">
     			<code class="async">
-    	var app = require('express')();
+    	var express = require('express');
+        var app = express();
     	var http = require('http').Server(app);
     	var io = require('socket.io')(http);
 
@@ -394,13 +434,47 @@
     		</div>
 
     	  </div>
-    	</div>
-    	</div>
-
+    	
+<!-- Modal for sendChat.js-->
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalsendChat">View sendChat.js chat code</button>
+            <div id="myModalsendChat" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Client Side, Sending Chat Messages</h4>
+                  </div>
+                  <div class="modal-body">
+            <pre class="well well-md">
+                <code>
+    var socket = io();
+      $('form').submit(function(){
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+      });
+      socket.on('chat message', function(msg){
+        $('#messages').append($('&lt;li&gt;').text(msg));
+      });
+                </code>
+            </pre>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
     	<div>
     		<h2>Final index.js Chat App</h2>
             <div class="well well-lg">
         		<p>Now once we make it listen into the http server, we can finish off the applicatoin</p>
+                <p>All we still need is to make the server listen to the file, as we did in the early exercise</p>
         				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalchat">View chat code</button>
 
         		<!-- Modal -->
