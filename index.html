@@ -13,197 +13,211 @@
 </head>
 
 <body class="container">
-	
 	<div class="header">
-		<h1 class="pageTitle">An Introduction to Server Side Web Development</h1>
-		<img id="nodelogo" src="img/node-logo.png"></img>
+
+		<div class="container row">
+            <div class="col-lg-4">
+              <img id="nodelogo" src="img/node-logo.png"></img>
+            </div>
+            <div class="col-lg-8">
+                 <h1 class="pageTitle">Node.js <small>An Introduction to Server Side Web Development</small></h1>
+            </div>
+            
+        </div>
 		
 	</div>
 
 	<!--What is node, explanation-->
 	<div>
-		<h2><b>WHAT</b> is node.js?</h2>
-		<p>It is a runtime environment that takes JavaScript events and puts them into an event loop to complete.  It is used in place of the web browsers, by running it in the command line (terminal). One usually defines a run function at the beginning of code, but node.js starts it immediately, and only stops once it has executed all events.</p>
-		<p>Node Package manager, known as NPM, can install various dependencies that simplify and extend functionality of node. All these modules contain stored functions that can be reused with node, and there are hundreds of them available to download with NPM. We will be using express and socket.io</p>
-		<p>Express is a very common framework that simplifies building a simple web service and some standard funcionality</p>
-		<p>We will also introduce socket.io, which is a package that is especially useful for realtime applications, by connecting web clients and servers. It works with a client-side library in the browser, and a server-side library which runs with node.js</p>
-	</div>
-
-	<div>
-		<h2><b>WHEN</b> should you use node.js</h2>
-		<p>It runs asynchronously, so it can handle multiple actions at once, much quicker.  When it needs to operate, it sends a call to the events loop, then continues to go through the file, while the events are worked on.</p>
-		<p>This makes it especially good for running real time, live applications, and those that require large amounts of data.</p>
-
+		<h2>Introduction</h2>
+		<div class="well well-lg">
+            <h4><b>WHAT</b> is node.js?</h4>
+            <p>It is a runtime environment that takes JavaScript events and puts them into an event loop to complete.  It is used in place of the web browsers, by running it in the command line (terminal). One usually defines a run function at the beginning of code, but node.js starts it immediately, and only stops once it has executed all events.</p>
+    		<p>Node Package manager, known as NPM, can install various dependencies that simplify and extend functionality of node. All these modules contain stored functions that can be reused with node, and there are hundreds of them available to download with NPM. We will be using express and socket.io</p>
+    		<p>Express is a very common framework that simplifies building a simple web service and some standard funcionality</p>
+    		<p>We will also introduce socket.io, which is a package that is especially useful for realtime applications, by connecting web clients and servers. It works with a client-side library in the browser, and a server-side library which runs with node.js</p>
+            <br />
+    		<h4><b>WHEN</b> should you use node.js</h4>
+    		<p>It runs asynchronously, so it can handle multiple actions at once, much quicker.  When it needs to operate, it sends a call to the events loop, then continues to go through the file, while the events are worked on.</p>
+    		<p>This makes it especially good for running real time, live applications, and those that require large amounts of data.</p>
+        </div>
+    </div>
 	<!--Teahing user to make a basic server, that does nothing with node.js-->
 	<div>
 		<h2>Create a basic http server</h2>
-		<p>First off, we start by using the HTTP server</p>
-		<p>In the file called "server.js", make an HTTP request to use the HTTP server with</p>
-		<pre class="well well-md">
-			<code class="startserver">
-	var http = require("http");
-			</code>
-		</pre>
-		<p>Once you have requested http, you have to create the server, and listen to it on a local host (eg. 8888) with </p>
-		<pre class="well well-md">
-			<code class="startserver">
-	var server = http.createServer();
-	server.listen(8888);
-			</code>
-		</pre>
-		<p>This will start your file, and listen for commands on the local server 8888.  However, since we haven't made any requests yet, this command doesn't do anything.</p>
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">View Code</button>
+        <div class="well well-lg">
+    		<p>First off, we start by using the HTTP server</p>
+    		<p>In the file called "server.js", make an HTTP request to use the HTTP server with</p>
+    		<pre class="well well-md">
+    			<code class="startserver">
+    	var http = require("http");
+    			</code>
+    		</pre>
+    		<p>Once you have requested http, you have to create the server, and listen to it on a local host (eg. 8888) with </p>
+    		<pre class="well well-md">
+    			<code class="startserver">
+    	var server = http.createServer();
+    	server.listen(8888);
+    			</code>
+    		</pre>
+    		<p>This will start your file, and listen for commands on the local server 8888.  However, since we haven't made any requests yet, this command doesn't do anything.</p>
+    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">View Code</button>
 
-		<!-- Modal -->
-		<div id="myModal" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
+    		<!-- Modal -->
+    		<div id="myModal" class="modal fade" role="dialog">
+    		  <div class="modal-dialog">
 
-		    <!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Running empty HTTP Server</h4>
-		      </div>
-		      <div class="modal-body">
-		<pre class="well well-md">
-			<code class="startserver">
-	var http = require("http");
+    		    <!-- Modal content-->
+    		    <div class="modal-content">
+    		      <div class="modal-header">
+    		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    		        <h4 class="modal-title">Running empty HTTP Server</h4>
+    		      </div>
+    		      <div class="modal-body">
+    		<pre class="well well-md">
+    			<code class="startserver">
+    	var http = require("http");
 
-	var server = http.createServer();
-	server.listen(8888);
-			</code>
-		</pre>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		      </div>
-		    </div>
+    	var server = http.createServer();
+    	server.listen(8888);
+    			</code>
+    		</pre>
+    		      </div>
+    		      <div class="modal-footer">
+    		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    		      </div>
+    		    </div>
 
-		  </div>
-		</div>
+    		  </div>
+    		</div>
 
-		
-	</div>
+    		
+    	</div>
+    </div>
 
 	<!--Writes onto the server using the response-->
 	<div>
 		<h2>Writing to the server</h2>
-		<p>Now that we have a server running, we can add a function into the server, so that it will actually do something!  In our createServer() function, we now needs parameters for a request and a response.</p>
-		<p>The <b>response</b> is what appears on our local server.</p>
-		<p>Write to the response with the following </p>
-		<pre class="well well-md">
-			<code class="basichttp">
-	response.writeHead(200, {"Content-Type": "text/plain"});
-	response.write("blah blah blah");
-			</code>
-		</pre>
-		<p>Whatever you write inside the write() method will be written on the server.</p>
-		<p>Now try adding to your "server.js" method by writing something to the page.  Now when you run the server with </p>
-		<pre class="well well-md">
-			<code class="basichttp">
-	node server.js
-			</code>
-		</pre>
-		<p>You should get that text on your localhost</p>
+        <div class="well well-lg">
+    		<p>Now that we have a server running, we can add a function into the server, so that it will actually do something!  In our createServer() function, we now needs parameters for a request and a response.</p>
+    		<p>The <b>response</b> is what appears on our local server.</p>
+    		<p>Write to the response with the following </p>
+    		<pre class="well well-md">
+    			<code class="basichttp">
+    	response.writeHead(200, {"Content-Type": "text/plain"});
+    	response.write("blah blah blah");
+    			</code>
+    		</pre>
+    		<p>Whatever you write inside the write() method will be written on the server.</p>
+    		<p>Now try adding to your "server.js" method by writing something to the page.  Now when you run the server with </p>
+    		<pre class="well well-md">
+    			<code class="basichttp">
+    	node server.js
+    			</code>
+    		</pre>
+    		<p>You should get that text on your localhost</p>
 
-		<!-- Trigger the modal with a button -->
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">View the Code</button>
+    		<!-- Trigger the modal with a button -->
+    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">View the Code</button>
 
-		<!-- Modal -->
-		<div id="myModal2" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
+    		<!-- Modal -->
+    		<div id="myModal2" class="modal fade" role="dialog">
+    		  <div class="modal-dialog">
 
-		    <!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Running on a local Server</h4>
-		      </div>
-		      <div class="modal-body">
-		<pre class="well well-md">
-			<code class="basichttp">
-	var http = require("http");
+    		    <!-- Modal content-->
+    		    <div class="modal-content">
+    		      <div class="modal-header">
+    		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    		        <h4 class="modal-title">Running on a local Server</h4>
+    		      </div>
+    		      <div class="modal-body">
+    		<pre class="well well-md">
+    			<code class="basichttp">
+    	var http = require("http");
 
-	http.createServer(function(request, response) {
-	  	response.writeHead(200, {"Content-Type": "text/plain"});
-	  	response.write("This will be posted on your server");
-		response.end();
-	}).listen(8888);
-			</code>
-		</pre>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		      </div>
-		    </div>
+    	http.createServer(function(request, response) {
+    	  	response.writeHead(200, {"Content-Type": "text/plain"});
+    	  	response.write("This will be posted on your server");
+    		response.end();
+    	}).listen(8888);
+    			</code>
+    		</pre>
+    		      </div>
+    		      <div class="modal-footer">
+    		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    		      </div>
+    		    </div>
 
-		  </div>
-		</div>
+    		  </div>
+    		</div>
 
 
-		<p>Now you are running an http server on your local host (8888).</p>
-		<p>Now if you go to localhost:8888, it should be running your server, and writing whatever you put in the function response.write()!</p>
-	</div>
+    		<p>Now you are running an http server on your local host (8888).</p>
+    		<p>Now if you go to localhost:8888, it should be running your server, and writing whatever you put in the function response.write()!</p>
+    	</div>
+    </div>
 
 	
 	<!--Next we are showing the order of events and how asynchronous calls work-->
 	<div>
 		<h2>Asynchronous Calls with Node.js</h2>
-		<p>This next section will show the order that node.js is processing requests</p>
-		<p>We will do that by printing to the console with console.log()</p>
-		<p>First, we will put our actions into a function, and call it onRequest.  This should do the same thing as the function within createServer, but lets simplify by making it a unique function.  </p>
-		<pre class="well well-md">
-			<code>
-	function onRequest(request, response) {
-	  	response.writeHead(200, {"Content-Type": "text/plain"});
-	  	response.write("blah blah blah");
-		response.end();
-	})
-			</code>
-		</pre>
+        <div class="well well-lg">
+    		<p>This next section will show the order that node.js is processing requests</p>
+    		<p>We will do that by printing to the console with console.log()</p>
+    		<p>First, we will put our actions into a function, and call it onRequest.  This should do the same thing as the function within createServer, but lets simplify by making it a unique function.  </p>
+    		<pre class="well well-md">
+    			<code>
+    	function onRequest(request, response) {
+    	  	response.writeHead(200, {"Content-Type": "text/plain"});
+    	  	response.write("blah blah blah");
+    		response.end();
+    	})
+    			</code>
+    		</pre>
 
-		<p>Add console notes to your server.js file, at the beginning of your function when the request is made, and after server begins running. </p>
-		<!-- Trigger the modal with a button -->
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">View Code</button>
+    		<p>Add console notes to your server.js file, at the beginning of your function when the request is made, and after server begins running. </p>
+    		<!-- Trigger the modal with a button -->
+    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">View Code</button>
 
-		<!-- Modal -->
-		<div id="myModal3" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		    <!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">See Asynchronous Order</h4>
-		      </div>
-		      <div class="modal-body">
-		<pre class="well well-md">
-			<code class="async">
-	var http = require("http");
-	function onRequest(request, response) {
-		console.log("Request received.");
-	  	response.writeHead(200, {"Content-Type": "text/plain"});
-	  	response.write("This will be posted on your server");
-	  	response.end();
-	}
-	http.createServer(onRequest).listen(8888);
-	console.log("Server has started.");
-			</code>
-		</pre>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		      </div>
-		    </div>
+    		<!-- Modal -->
+    		<div id="myModal3" class="modal fade" role="dialog">
+    		  <div class="modal-dialog">
+    		    <!-- Modal content-->
+    		    <div class="modal-content">
+    		      <div class="modal-header">
+    		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    		        <h4 class="modal-title">See Asynchronous Order</h4>
+    		      </div>
+    		      <div class="modal-body">
+    		<pre class="well well-md">
+    			<code class="async">
+    	var http = require("http");
+    	function onRequest(request, response) {
+    		console.log("Request received.");
+    	  	response.writeHead(200, {"Content-Type": "text/plain"});
+    	  	response.write("This will be posted on your server");
+    	  	response.end();
+    	}
+    	http.createServer(onRequest).listen(8888);
+    	console.log("Server has started.");
+    			</code>
+    		</pre>
+    		      </div>
+    		      <div class="modal-footer">
+    		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    		      </div>
+    		    </div>
 
-		  </div>
-		</div>
+    		  </div>
+    		</div>
 
 
-		
-		<p>The expected order in the console based on how we've been running the server in this class would be : "Request received." in the console, followed by the request being written to the server, then finally "Server has started." in the console.  However, due to asynchronous calling, when the funcion is called, first the action is thrown into the event loop, then the server is started, and "Server has started." is shown on the console, then as node.js goes through the events, the request is received and then posted on the server.</p>
-
+    		
+    		<p>The expected order in the console based on how we've been running the server in this class would be : "Request received." in the console, followed by the request being written to the server, then finally "Server has started." in the console.  However, due to asynchronous calling, when the funcion is called, first the action is thrown into the event loop, then the server is started, and "Server has started." is shown on the console, then as node.js goes through the events, the request is received and then posted on the server.</p>
+        </div>
 	<!--This next section shows how to use a router seperately-->
-	<div>
+	<!--
+    <div>
 		<h2>Routers</h2>
 		<p>We can make the server.js file take care of the server, but run the calls on our index.js file.  In our index.js file, all we need is to verify that there is a server through the require function, and then call for action on that server.  We do this with the code:
 		<pre class="well well-md">
@@ -232,194 +246,202 @@
 		</pre>
 		<p>This calls our request function when start is called.  First it puts the onRequest function in the action loop, then outside of the onRequest function, it starts the server, then executes the action.  "exports.start = start" creates an empty object "exports" then sets it to the return of the start function. </p>  		
 	</div>
+    -->
 
 	<!--Installing modules and such -->
 	<div>
 		<h2>Node.js Modules/Dependencies</h2>
-		<p>First to create a file package.json, you initialize NPM in your command line with:</p>
-		<pre class="well well-md">
-			<code>
-	$npm init
-			</code>
-		</pre>
-		<p>This will create a file with certain dependencies in the file, and as you download packages to NPM, they will be stored in package.json.</p>
-		<!-- Trigger the modal with a button -->
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModaljson">View Package.json</button>
+        <div class="well well-lg">
+    		<p>First to create a file package.json, you initialize NPM in your command line with:</p>
+    		<pre class="well well-md">
+    			<code>
+    	$npm init
+    			</code>
+    		</pre>
+    		<p>This will create a file with certain dependencies in the file, and as you download packages to NPM, they will be stored in package.json.</p>
+    		<!-- Trigger the modal with a button -->
+    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModaljson">View Package.json</button>
 
-		<!-- Modal -->
-		<div id="myModaljson" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		    <!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Default file for package.json</h4>
-		      </div>
-		      <div class="modal-body">
-		<pre class="well well-md">
-			<code class="async">
-{
-  "name": "test",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.13.3"
-    "socket.io": "1.2.0"
-  }
-}
-			</code>
-		</pre>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		      </div>
-		    </div>
-		</div>
+    		<!-- Modal -->
+    		<div id="myModaljson" class="modal fade" role="dialog">
+    		  <div class="modal-dialog">
+    		    <!-- Modal content-->
+    		    <div class="modal-content">
+    		      <div class="modal-header">
+    		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    		        <h4 class="modal-title">Default file for package.json</h4>
+    		      </div>
+    		      <div class="modal-body">
+    		<pre class="well well-md">
+    			<code class="async">
+    {
+      "name": "test",
+      "version": "1.0.0",
+      "description": "",
+      "main": "index.js",
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "author": "",
+      "license": "ISC",
+      "dependencies": {
+        "express": "^4.13.3"
+        "socket.io": "1.2.0"
+      }
+    }
+    			</code>
+    		</pre>
+    		      </div>
+    		      <div class="modal-footer">
+    		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    		      </div>
+    		    </div>
+    		</div>
 
-	  </div>
-	</div>
+    	  </div>
+    	</div>
+    </div>
 
 	<div>
 		<h2>Using Express</h2>
-		<p>One of the great uses of express is to attach an HTML file to the server</p>
-		<p>This can be done using the .get() function in express, it takes care of basic routing.  To create an express app, you must require it, then create an app with the following:</p>
-		<pre class="well well-md">
-			<code>
-	var express = require("express");
-	var app = express();
-			</code>
-		</pre>
-		<p>Then you can go into basic routing of the server instance in express (app).  The standard format of this is "app.method(path, handler)". To put something into the root route, the path should be "/", and the handler is a function.  The function needs both the request and result as a parameters in order to post to the server.  The result, as before is what is posted on the server page.</p>
-		<p>There are a number of methods to add to the server page (hint:the method we need is sendFile())</p> 
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalio">View chat code</button>
+        <div class="well well-lg">
+    		<p>One of the great uses of express is to attach an HTML file to the server</p>
+    		<p>This can be done using the .get() function in express, it takes care of basic routing.  To create an express app, you must require it, then create an app with the following:</p>
+    		<pre class="well well-md">
+    			<code>
+    	var express = require("express");
+    	var app = express();
+    			</code>
+    		</pre>
+    		<p>Then you can go into basic routing of the server instance in express (app).  The standard format of this is "app.method(path, handler)". To put something into the root route, the path should be "/", and the handler is a function.  The function needs both the request and result as a parameters in order to post to the server.  The result, as before is what is posted on the server page.</p>
+    		<p>There are a number of methods to add to the server page (hint:the method we need is sendFile())</p> 
+    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalio">View chat code</button>
 
-		<!-- Modal -->
-		<div id="myModalio" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		    <!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Adding HTML file to node</h4>
-		      </div>
-		      <div class="modal-body">
-		<pre class="well well-md">
-			<code class="async">
-	var express = require('express');
-	var app = express();
-	var http = require('http').Server(app);
-	var io = require('socket.io')(http);
+    		<!-- Modal -->
+    		<div id="myModalio" class="modal fade" role="dialog">
+    		  <div class="modal-dialog">
+    		    <!-- Modal content-->
+    		    <div class="modal-content">
+    		      <div class="modal-header">
+    		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    		        <h4 class="modal-title">Adding HTML file to node</h4>
+    		      </div>
+    		      <div class="modal-body">
+    		<pre class="well well-md">
+    			<code class="async">
+    	var express = require('express');
+    	var app = express();
+    	var http = require('http').Server(app);
+    	var io = require('socket.io')(http);
 
-	app.get('/', function(req, res){
-	  res.sendFile(__dirname + '/index.html');
-	});
-			</code>
-		</pre>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		      </div>
-		    </div>
-		</div>
+    	app.get('/', function(req, res){
+    	  res.sendFile(__dirname + '/index.html');
+    	});
+    			</code>
+    		</pre>
+    		      </div>
+    		      <div class="modal-footer">
+    		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    		      </div>
+    		    </div>
+    		</div>
 
-	  </div>
-	</div>
+    	  </div>
+    	</div>
 
-	</div>
+    	</div>
+    </div>
 
 	<!--Now we need to use the socket.io to do chat messages-->
 	<div>
 		<h2>Socket.io Functions</h2>
-		<p></p>
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalsocket">View chat code</button>
+        <div class="well well-lg">
+    		<p></p>
+    		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalsocket">View chat code</button>
 
-		<!-- Modal -->
-		<div id="myModalsocket" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		    <!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Using socket.io for Chat</h4>
-		      </div>
-		      <div class="modal-body">
-		<pre class="well well-md">
-			<code class="async">
-	var app = require('express')();
-	var http = require('http').Server(app);
-	var io = require('socket.io')(http);
+    		<!-- Modal -->
+    		<div id="myModalsocket" class="modal fade" role="dialog">
+    		  <div class="modal-dialog">
+    		    <!-- Modal content-->
+    		    <div class="modal-content">
+    		      <div class="modal-header">
+    		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    		        <h4 class="modal-title">Using socket.io for Chat</h4>
+    		      </div>
+    		      <div class="modal-body">
+    		<pre class="well well-md">
+    			<code class="async">
+    	var app = require('express')();
+    	var http = require('http').Server(app);
+    	var io = require('socket.io')(http);
 
-	app.get('/', function(req, res){
-	  res.sendFile(__dirname + '/index.html');
-	});
+    	app.get('/', function(req, res){
+    	  res.sendFile(__dirname + '/index.html');
+    	});
 
-	io.on('connection', function(socket){
-	  socket.on('chat message', function(msg){
-	    io.emit('chat message', msg);
-	  });
-	});
-			</code>
-		</pre>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		      </div>
-		    </div>
-		</div>
+    	io.on('connection', function(socket){
+    	  socket.on('chat message', function(msg){
+    	    io.emit('chat message', msg);
+    	  });
+    	});
+    			</code>
+    		</pre>
+    		      </div>
+    		      <div class="modal-footer">
+    		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    		      </div>
+    		    </div>
+    		</div>
 
-	  </div>
-	</div>
-	</div>
+    	  </div>
+    	</div>
+    	</div>
 
-	<div>
-		<h2>Final index.js Chat App</h2>
-		<p>Now once we make it listen into the http server, we can finish off the applicatoin</p>
-				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalchat">View chat code</button>
+    	<div>
+    		<h2>Final index.js Chat App</h2>
+            <div class="well well-lg">
+        		<p>Now once we make it listen into the http server, we can finish off the applicatoin</p>
+        				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModalchat">View chat code</button>
 
-		<!-- Modal -->
-		<div id="myModalchat" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		    <!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Using socket.io for Chat</h4>
-		      </div>
-		      <div class="modal-body">
-		<pre class="well well-md">
-			<code class="async">
-	var app = require('express')();
-	var http = require('http').Server(app);
-	var io = require('socket.io')(http);
+        		<!-- Modal -->
+        		<div id="myModalchat" class="modal fade" role="dialog">
+        		  <div class="modal-dialog">
+        		    <!-- Modal content-->
+        		    <div class="modal-content">
+        		      <div class="modal-header">
+        		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        		        <h4 class="modal-title">Using socket.io for Chat</h4>
+        		      </div>
+        		      <div class="modal-body">
+        		<pre class="well well-md">
+        			<code class="async">
+        	var app = require('express')();
+        	var http = require('http').Server(app);
+        	var io = require('socket.io')(http);
 
-	app.get('/', function(req, res){
-	  res.sendFile(__dirname + '/index.html');
-	});
+        	app.get('/', function(req, res){
+        	  res.sendFile(__dirname + '/index.html');
+        	});
 
-	io.on('connection', function(socket){
-	  socket.on('chat message', function(msg){
-	    io.emit('chat message', msg);
-	  });
-	});
+        	io.on('connection', function(socket){
+        	  socket.on('chat message', function(msg){
+        	    io.emit('chat message', msg);
+        	  });
+        	});
 
-	http.listen(3000, function(){
-	  console.log('listening on *:3000');
-	});
-			</code>
-		</pre>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		      </div>
-		    </div>
-		</div>
-
+        	http.listen(3000, function(){
+        	  console.log('listening on *:3000');
+        	});
+        			</code>
+        		</pre>
+        		      </div>
+        		      <div class="modal-footer">
+        		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        		      </div>
+        		    </div>
+        		</div>
+            </div>
+        </div>
 	  </div>
 	</div>
 	</div>

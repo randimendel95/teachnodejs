@@ -1,4 +1,4 @@
-.well {
+.well-md {
 	background-color: black;
 	color:white;
 }
@@ -16,8 +16,15 @@
     background-color:black;
     height:100px;
     width:auto;
-    display:inline;
+
 }
-.header {
-    display:inline;
+.header > div{
+
+    color:white;
+    background-color:black;
 }
+
+.pageTitle {
+    margin-left:1em;
+}
+
