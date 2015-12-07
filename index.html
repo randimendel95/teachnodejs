@@ -32,14 +32,14 @@
 		<h2>Introduction</h2>
 		<div class="well well-lg">
             <h4><b>WHAT</b> is node.js?</h4>
-            <p>It is a runtime environment that takes JavaScript events and puts them into an event loop to complete.  It is used in place of the web browsers, by running it in the command line (terminal). One usually defines a run function at the beginning of code, but node.js starts it immediately, and only stops once it has executed all events.</p>
-    		<p>Node Package manager, known as NPM, can install various dependencies that simplify and extend functionality of node. All these modules contain stored functions that can be reused with node, and there are hundreds of them available to download with NPM. We will be using express and socket.io</p>
+            <p>Node.js is a runtime environment that takes JavaScript events and puts them into an event loop to complete.  It is used in place of web browsers by running it in the command line (terminal). One usually defines a run function at the beginning of code, but node.js starts it immediately, and only stops once it has executed all events.</p>
+    		<p>Node Package Manager, known as NPM, can install various packages that simplify and extend functionality of Node. All these modules contain stored functions that can be reused, and there are hundreds of them available to download with NPM. We will demonstrate this by using express and socket.io in our sample application.</p>
     		<p>Express is a very common framework that simplifies building a simple web service and some standard funcionality</p>
-    		<p>We will also introduce socket.io, which is a package that is especially useful for realtime applications, by connecting web clients and servers. It works with a client-side library in the browser, and a server-side library which runs with node.js</p>
+    		<p>We will also introduce socket.io, which is a package that is especially useful for realtime applications, by connecting web clients and servers. It works with a client-side library in the browser, and a server-side library which runs with Node.js</p>
             <br />
     		<h4><b>WHEN</b> should you use node.js</h4>
-            <p>It is especially good for running real time, live applications, and those that require large amounts of data that has to be constantly loaded.</p>
-    		<p>It runs asynchronously, so it can handle multiple actions at once, much quicker.  When it needs to operate, it sends a call to the events loop, then continues to go through the file, while the events are worked on.</p>
+            <p>Node is especially good for running real time, live applications, and those that require large amounts of data that has to be constantly loaded.</p>
+    		<p>Node also runs asynchronously, so it can quickly handle multiple actions at once.  When it needs to operate, it sends a call to the events loop, then continues to go through the file, while the events are worked on.</p>
     		
         </div>
     </div>
@@ -47,21 +47,22 @@
 	<div>
 		<h2>Create a basic http server</h2>
         <div class="well well-lg">
+            <p>A standard application of Node is to use it for running simple servers off a computer.</p>
     		<p>First off, we start by using the HTTP server</p>
-    		<p>Create a file called "index.js", make an HTTP request to use the HTTP server with</p>
+    		<p>Create a file called "index.js", and require the server to operate within the HTTP protocol</p>
     		<pre class="well well-md">
     			<code class="startserver">
     	var http = require("http");
     			</code>
     		</pre>
-    		<p>Once you have requested http, you have to create the server, and listen to it on a local host (eg. 8888) with </p>
+    		<p>Once you have requested http, you have to create the server, and listen to it on a local host port (eg. 8888) with </p>
     		<pre class="well well-md">
     			<code class="startserver">
     	var server = http.createServer();
     	server.listen(8888);
     			</code>
     		</pre>
-    		<p>This will start your file, and listen for commands on the local server 8888.  However, since we haven't made any requests yet, this command doesn't do anything.  If you check your output on the server, you will not see anything.</p>
+    		<p>This will start your file, and listen for commands on the local server port "8888".  However, since we haven't made any requests yet, nothing will display in the browser if we connect to our server.  </p>
     		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">View Code</button>
 
     		<!-- Modal -->
@@ -100,8 +101,8 @@
 	<div>
 		<h2>Writing to the server</h2>
         <div class="well well-lg">
-    		<p>Now that we have a server running, we can add a function into the server, so that it will actually do something!  In our createServer() function, we now needs parameters for a request and a response.</p>
-    		<p>The <b>response</b> is what appears on our local server 8888.</p>
+    		<p>Now that we have a server running, we can add a function into the server, so that it will actually do something!  In our createServer() function, we now need parameters for a request and a response.</p>
+    		<p>The <b>response</b> is what is returned when we access the server's port.</p>
     		<p>Write to the response with the following </p>
     		<pre class="well well-md">
     			<code class="basichttp">
@@ -110,7 +111,7 @@
     			</code>
     		</pre>
     		<p>Whatever you write inside the write() method will be written on the server.</p>
-    		<p>Now try adding to your "index.js" method by writing something to the page.  Now when you run the server with the following command in your terminal</p>
+    		<p>Now try adding it to your "index.js" method by writing something to the page.  Now when you run the server with the following command in your terminal</p>
     		<pre class="well well-md">
     			<code class="basichttp">
     	node server.js
@@ -153,11 +154,10 @@
     		</div>
 
 
-    		<p>Now you are running an http server on your local host (8888).</p>
+    		<p>Now you are running a simple HTTP server!</p>
     		<p>If you go to localhost:8888, it should be running your server, and writing whatever you put in the function response.write()!</p>
     	</div>
     </div>
-
 	
 	<!--Next we are showing the order of events and how asynchronous calls work-->
 	<div>
